@@ -2,8 +2,33 @@
 import { Helmet } from "react-helmet-async";
 import Layout from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const PortTinian = () => {
+  const services = [
+    {
+      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop",
+      title: "Ferry Terminal",
+      description: "Modern ferry terminal connecting Tinian with Saipan and other islands"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&h=400&fit=crop",
+      title: "Cargo Operations",
+      description: "Efficient cargo handling for essential supplies and commercial goods"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=600&h=400&fit=crop",
+      title: "Vehicle Transport",
+      description: "Roll-on/roll-off services for vehicle transportation between islands"
+    }
+  ];
+
   return (
     <>
       <Helmet>
@@ -12,18 +37,25 @@ const PortTinian = () => {
       </Helmet>
       
       <Layout>
-        <div className="bg-blue-900 text-white py-16">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-center mb-6">Port of Tinian</h1>
-            <p className="text-xl text-center text-blue-100 max-w-3xl mx-auto">
-              Strategic cargo and ferry operations connecting Tinian to the Commonwealth network.
-            </p>
+        <div className="relative h-64 md:h-96 overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&h=600&fit=crop"
+            alt="Port of Tinian"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+            <div className="text-center text-white px-4">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">Port of Tinian</h1>
+              <p className="text-xl md:text-2xl max-w-3xl mx-auto">
+                Strategic cargo and ferry operations connecting Tinian to the Commonwealth network.
+              </p>
+            </div>
           </div>
         </div>
 
         <section className="py-16">
           <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-8 mb-16">
               <Card>
                 <CardHeader>
                   <CardTitle>Ferry Services</CardTitle>
@@ -31,7 +63,8 @@ const PortTinian = () => {
                 <CardContent>
                   <p className="text-gray-600">
                     Regular ferry connections between Tinian and Saipan, providing essential 
-                    inter-island transportation for passengers and vehicles.
+                    inter-island transportation for passengers and vehicles. Our reliable schedule 
+                    ensures consistent connectivity for residents, visitors, and commerce.
                   </p>
                 </CardContent>
               </Card>
@@ -43,11 +76,45 @@ const PortTinian = () => {
                 <CardContent>
                   <p className="text-gray-600">
                     Efficient cargo handling services supporting the economic development and 
-                    supply chain needs of Tinian island.
+                    supply chain needs of Tinian island. We handle everything from essential 
+                    supplies to commercial goods with care and efficiency.
                   </p>
                 </CardContent>
               </Card>
             </div>
+
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Port Services</h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Comprehensive maritime services connecting Tinian to the broader Commonwealth network.
+              </p>
+            </div>
+
+            <Carousel className="w-full max-w-4xl mx-auto">
+              <CarouselContent>
+                {services.map((service, index) => (
+                  <CarouselItem key={index} className="md:basis-1/2">
+                    <Card className="h-full">
+                      <div className="h-48 overflow-hidden">
+                        <img
+                          src={service.image}
+                          alt={service.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <CardHeader>
+                        <CardTitle>{service.title}</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-gray-600">{service.description}</p>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           </div>
         </section>
       </Layout>

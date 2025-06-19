@@ -10,25 +10,25 @@ const Index = () => {
     {
       icon: Ship,
       title: "Port Operations",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Comprehensive maritime services across all three islands.",
+      description: "Comprehensive maritime services across all three islands with state-of-the-art facilities.",
       image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=400&h=200&fit=crop"
     },
     {
       icon: Truck,
       title: "Cargo Services",
-      description: "Ut enim ad minim veniam, quis nostrud exercitation. Efficient cargo handling and logistics solutions.",
+      description: "Efficient cargo handling and logistics solutions supporting the Commonwealth's economy.",
       image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=200&fit=crop"
     },
     {
       icon: Anchor,
       title: "Ferry Services",
-      description: "Duis aute irure dolor in reprehenderit. Reliable inter-island passenger and vehicle transportation.",
+      description: "Reliable inter-island passenger and vehicle transportation connecting our communities.",
       image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=200&fit=crop"
     },
     {
       icon: Users,
       title: "Community Focus",
-      description: "Excepteur sint occaecat cupidatat non proident. Serving the Commonwealth with dedication and excellence.",
+      description: "Serving the Commonwealth with dedication and excellence for sustainable growth.",
       image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=200&fit=crop"
     }
   ];
@@ -44,19 +44,6 @@ const Index = () => {
         {/* Hero Section with Image Slider */}
         <div className="relative">
           <ImageSlider />
-          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-            <div className="text-center text-white px-4">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Connecting the Commonwealth
-              </h1>
-              <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
-                Explore Our Services
-              </button>
-            </div>
-          </div>
         </div>
 
         {/* Features Section */}
@@ -65,8 +52,8 @@ const Index = () => {
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Services</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-                totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.
+                Connecting the Commonwealth through efficient and reliable port operations, 
+                supporting economic growth and inter-island connectivity across Saipan, Tinian, and Rota.
               </p>
             </div>
 
@@ -101,7 +88,8 @@ const Index = () => {
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Ports</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.
+                Modern port facilities serving the unique needs of each island in the Commonwealth,
+                ensuring reliable maritime connections and economic opportunities.
               </p>
             </div>
 
@@ -115,7 +103,7 @@ const Index = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. The main commercial and passenger hub serving the Commonwealth.
+                    The main commercial and passenger hub serving the Commonwealth with comprehensive maritime services and modern facilities.
                   </p>
                   <button className="text-blue-600 hover:text-blue-800 font-semibold">
                     Learn More →
@@ -132,7 +120,7 @@ const Index = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-4">
-                    Ut enim ad minim veniam, quis nostrud exercitation. Strategic cargo and ferry operations connecting Tinian to the network.
+                    Strategic cargo and ferry operations connecting Tinian to the Commonwealth network with reliable transportation services.
                   </p>
                   <button className="text-blue-600 hover:text-blue-800 font-semibold">
                     Learn More →
@@ -149,7 +137,7 @@ const Index = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-4">
-                    Duis aute irure dolor in reprehenderit. Essential island connectivity and maritime services for the island of Rota.
+                    Essential island connectivity and maritime services supporting the unique community and economic needs of Rota.
                   </p>
                   <button className="text-blue-600 hover:text-blue-800 font-semibold">
                     Learn More →
@@ -165,7 +153,7 @@ const Index = () => {
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto text-blue-100">
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              Connect with us to learn more about our services, facilities, and how we can support your maritime needs across the Commonwealth.
             </p>
             <div className="space-x-4">
               <button className="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
