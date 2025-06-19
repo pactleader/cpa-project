@@ -21,7 +21,6 @@ const Header = () => {
       ]
     },
     { name: "Documents", href: "/documents" },
-    { name: "News", href: "/news" },
     { 
       name: "Services", 
       href: "#",
@@ -37,10 +36,11 @@ const Header = () => {
       submenu: [
         { name: "Board of Directors", href: "/board" },
         { name: "Procurement", href: "/procurement" },
-        { name: "Careers", href: "/careers" }
+        { name: "Careers", href: "/careers" },
+        { name: "Citizen Centric Reports", href: "/citizen-centric-reports" }
       ]
     },
-    { name: "Media", href: "/media" },
+    { name: "News & Media", href: "/media" },
     { name: "Contact", href: "/contact" }
   ];
 
@@ -61,12 +61,12 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-6">
             {navigationItems.map((item) => (
               <div key={item.name} className="relative group">
                 {item.submenu ? (
                   <div>
-                    <button className="text-gray-700 hover:text-blue-900 font-medium py-4 px-2 transition-colors">
+                    <button className="text-gray-700 hover:text-blue-900 font-medium py-4 px-3 transition-colors">
                       {item.name}
                     </button>
                     <div className="absolute top-full left-0 mt-1 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-48">
@@ -84,7 +84,7 @@ const Header = () => {
                 ) : (
                   <Link
                     to={item.href}
-                    className="text-gray-700 hover:text-blue-900 font-medium py-4 px-2 transition-colors"
+                    className="text-gray-700 hover:text-blue-900 font-medium py-4 px-3 transition-colors"
                   >
                     {item.name}
                   </Link>

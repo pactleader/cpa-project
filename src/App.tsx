@@ -11,7 +11,6 @@ import PortSaipan from "./pages/PortSaipan";
 import PortTinian from "./pages/PortTinian";
 import PortRota from "./pages/PortRota";
 import Documents from "./pages/Documents";
-import News from "./pages/News";
 import Contact from "./pages/Contact";
 import Board from "./pages/Board";
 import Procurement from "./pages/Procurement";
@@ -21,6 +20,7 @@ import TariffRates from "./pages/TariffRates";
 import Regulations from "./pages/Regulations";
 import FAQ from "./pages/FAQ";
 import NotFound from "./pages/NotFound";
+import CitizenCentricReports from "./pages/CitizenCentricReports";
 
 const queryClient = new QueryClient();
 
@@ -38,7 +38,6 @@ const App = () => (
             <Route path="/port-tinian" element={<PortTinian />} />
             <Route path="/port-rota" element={<PortRota />} />
             <Route path="/documents" element={<Documents />} />
-            <Route path="/news" element={<News />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/board" element={<Board />} />
             <Route path="/procurement" element={<Procurement />} />
@@ -47,6 +46,7 @@ const App = () => (
             <Route path="/tariff-rates" element={<TariffRates />} />
             <Route path="/regulations" element={<Regulations />} />
             <Route path="/faq" element={<FAQ />} />
+            <Route path="/citizen-centric-reports" element={<CitizenCentricReports />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
