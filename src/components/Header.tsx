@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -40,7 +39,7 @@ const Header = () => {
         { name: "Citizen Centric Reports", href: "/citizen-centric-reports" }
       ]
     },
-    { name: "News & Media", href: "/media" },
+    { name: "News", href: "/media" },
     { name: "Contact", href: "/contact" }
   ];
 
@@ -61,12 +60,12 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-6">
+          <nav className="hidden lg:flex items-center space-x-1">
             {navigationItems.map((item) => (
               <div key={item.name} className="relative group">
                 {item.submenu ? (
                   <div>
-                    <button className="text-gray-700 hover:text-blue-900 font-medium py-4 px-3 transition-colors">
+                    <button className="text-gray-700 hover:text-blue-900 font-medium py-4 px-4 transition-colors">
                       {item.name}
                     </button>
                     <div className="absolute top-full left-0 mt-1 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-48">
@@ -84,7 +83,7 @@ const Header = () => {
                 ) : (
                   <Link
                     to={item.href}
-                    className="text-gray-700 hover:text-blue-900 font-medium py-4 px-3 transition-colors"
+                    className="text-gray-700 hover:text-blue-900 font-medium py-4 px-4 transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -98,8 +97,7 @@ const Header = () => {
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" className="lg:hidden">
                 <Menu className="h-6 w-6" />
-              </Button>
-            </SheetTrigger>
+              </SheetTrigger>
             <SheetContent side="right" className="w-80">
               <div className="flex flex-col space-y-4 mt-8">
                 {navigationItems.map((item) => (

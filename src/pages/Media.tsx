@@ -1,4 +1,3 @@
-
 import { Helmet } from "react-helmet-async";
 import Layout from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -95,7 +94,7 @@ const Media = () => {
   return (
     <>
       <Helmet>
-        <title>News & Media - CNMI Ports Authority</title>
+        <title>News - CNMI Ports Authority</title>
         <meta name="description" content="Latest news, updates, and media gallery from the CNMI Ports Authority." />
       </Helmet>
       
@@ -108,7 +107,7 @@ const Media = () => {
           />
           <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
             <div className="text-center text-white px-4">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">News & Media</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">News</h1>
               <p className="text-xl md:text-2xl max-w-3xl mx-auto">
                 Stay informed with the latest news and explore our media gallery showcasing port operations.
               </p>

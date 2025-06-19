@@ -1,9 +1,8 @@
-
 import { Helmet } from "react-helmet-async";
 import Layout from "@/components/Layout";
 import ImageSlider from "@/components/ImageSlider";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Anchor, Ship, Truck, Users } from "lucide-react";
+import { Anchor, Ship, Truck, Users, Play } from "lucide-react";
 
 const Index = () => {
   const features = [
@@ -45,6 +44,37 @@ const Index = () => {
         <div className="relative">
           <ImageSlider />
         </div>
+
+        {/* Featured Video Section */}
+        <section className="py-16 bg-blue-900 text-white">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Port Operations Overview</h2>
+              <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+                Discover how CNMI Ports Authority connects the Commonwealth through innovative maritime services and modern port facilities.
+              </p>
+            </div>
+
+            <div className="max-w-4xl mx-auto">
+              <div className="relative aspect-video bg-black rounded-lg overflow-hidden shadow-2xl">
+                <img
+                  src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=1200&h=675&fit=crop"
+                  alt="Port Operations Video Thumbnail"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                  <button className="bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full p-6 transition-all duration-300 group">
+                    <Play className="w-12 h-12 text-white group-hover:scale-110 transition-transform" fill="currentColor" />
+                  </button>
+                </div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h3 className="text-xl font-semibold mb-2">CNMI Ports Authority: Connecting Our Islands</h3>
+                  <p className="text-blue-100 text-sm">Learn about our comprehensive port operations and community services across Saipan, Tinian, and Rota.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Features Section */}
         <section className="py-16 bg-gray-50">
