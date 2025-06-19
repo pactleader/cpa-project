@@ -2,193 +2,178 @@
 import { Helmet } from "react-helmet-async";
 import Layout from "@/components/Layout";
 import ImageSlider from "@/components/ImageSlider";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { ArrowRight, Ship, FileText, Phone } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Anchor, Ship, Truck, Users } from "lucide-react";
 
 const Index = () => {
+  const features = [
+    {
+      icon: Ship,
+      title: "Port Operations",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Comprehensive maritime services across all three islands.",
+      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=400&h=200&fit=crop"
+    },
+    {
+      icon: Truck,
+      title: "Cargo Services",
+      description: "Ut enim ad minim veniam, quis nostrud exercitation. Efficient cargo handling and logistics solutions.",
+      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=200&fit=crop"
+    },
+    {
+      icon: Anchor,
+      title: "Ferry Services",
+      description: "Duis aute irure dolor in reprehenderit. Reliable inter-island passenger and vehicle transportation.",
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=200&fit=crop"
+    },
+    {
+      icon: Users,
+      title: "Community Focus",
+      description: "Excepteur sint occaecat cupidatat non proident. Serving the Commonwealth with dedication and excellence.",
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=200&fit=crop"
+    }
+  ];
+
   return (
     <>
       <Helmet>
         <title>CNMI Ports Authority - Connecting the Commonwealth</title>
-        <meta name="description" content="Official website of the Commonwealth of the Northern Mariana Islands Ports Authority. Port operations for Saipan, Tinian, and Rota." />
-        <meta name="keywords" content="CNMI, Ports Authority, Saipan, Tinian, Rota, Maritime, Cargo, Ferry, Northern Mariana Islands" />
+        <meta name="description" content="The Commonwealth of the Northern Mariana Islands Ports Authority provides essential maritime services connecting Saipan, Tinian, and Rota." />
       </Helmet>
       
       <Layout>
-        <ImageSlider />
-        
+        {/* Hero Section with Image Slider */}
+        <div className="relative">
+          <ImageSlider />
+          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+            <div className="text-center text-white px-4">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                Connecting the Commonwealth
+              </h1>
+              <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+              <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+                Explore Our Services
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Features Section */}
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Welcome to CNMI Ports Authority
-              </h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Services</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                The Commonwealth of the Northern Mariana Islands Ports Authority operates and maintains 
-                maritime facilities across Saipan, Tinian, and Rota, serving as vital gateways for 
-                commerce, tourism, and inter-island connectivity.
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
+                totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <Ship className="h-12 w-12 text-blue-600 mb-4" />
-                  <CardTitle>Port Operations</CardTitle>
-                  <CardDescription>
-                    Comprehensive maritime services including cargo handling, passenger ferry operations, and vessel management.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Link to="/port-saipan">
-                    <Button className="w-full">
-                      View Port Details
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <FileText className="h-12 w-12 text-blue-600 mb-4" />
-                  <CardTitle>Documents & Forms</CardTitle>
-                  <CardDescription>
-                    Access important documents, permits, and interactive forms for port services and operations.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Link to="/documents">
-                    <Button className="w-full">
-                      Access Documents
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <Phone className="h-12 w-12 text-blue-600 mb-4" />
-                  <CardTitle>Contact & Support</CardTitle>
-                  <CardDescription>
-                    Get in touch with our team for inquiries, support, or general information about our services.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Link to="/contact">
-                    <Button className="w-full">
-                      Contact Us
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {features.map((feature, index) => (
+                <Card key={index} className="hover:shadow-lg transition-shadow">
+                  <CardHeader className="text-center">
+                    <div className="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                      <feature.icon className="w-8 h-8 text-blue-600" />
+                    </div>
+                    <CardTitle className="text-xl">{feature.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-center">
+                    <img 
+                      src={feature.image}
+                      alt={feature.title}
+                      className="w-full h-32 object-cover rounded mb-4"
+                    />
+                    <p className="text-gray-600">
+                      {feature.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </section>
 
-        <section className="py-16 bg-blue-900 text-white">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <h3 className="text-3xl font-bold mb-6">Our Ports</h3>
-                <p className="text-xl mb-8 text-blue-100">
-                  Three strategic locations serving the Commonwealth's maritime needs with modern facilities and professional services.
-                </p>
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                    <Link to="/port-saipan" className="text-blue-100 hover:text-white transition-colors">
-                      Port of Saipan - Main commercial and passenger hub
-                    </Link>
-                  </div>
-                  <div className="flex items-center space-x-4">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                    <Link to="/port-tinian" className="text-blue-100 hover:text-white transition-colors">
-                      Port of Tinian - Strategic cargo and ferry operations
-                    </Link>
-                  </div>
-                  <div className="flex items-center space-x-4">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                    <Link to="/port-rota" className="text-blue-100 hover:text-white transition-colors">
-                      Port of Rota - Essential island connectivity
-                    </Link>
-                  </div>
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white/10 p-6 rounded-lg">
-                  <div className="text-3xl font-bold mb-2">24/7</div>
-                  <div className="text-blue-100">Port Operations</div>
-                </div>
-                <div className="bg-white/10 p-6 rounded-lg">
-                  <div className="text-3xl font-bold mb-2">3</div>
-                  <div className="text-blue-100">Active Ports</div>
-                </div>
-                <div className="bg-white/10 p-6 rounded-lg">
-                  <div className="text-3xl font-bold mb-2">50+</div>
-                  <div className="text-blue-100">Years of Service</div>
-                </div>
-                <div className="bg-white/10 p-6 rounded-lg">
-                  <div className="text-3xl font-bold mb-2">100%</div>
-                  <div className="text-blue-100">Commonwealth Coverage</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
+        {/* Ports Section */}
         <section className="py-16">
           <div className="container mx-auto px-4">
-            <h3 className="text-3xl font-bold text-center mb-12">Latest News & Updates</h3>
-            <div className="grid md:grid-cols-3 gap-8">
-              <Card>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Ports</h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-3 gap-8">
+              <Card className="overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="h-48 bg-cover bg-center" 
+                     style={{backgroundImage: "url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=300&fit=crop')"}}>
+                </div>
                 <CardHeader>
-                  <CardTitle className="text-lg">Port Modernization Project</CardTitle>
-                  <CardDescription>December 15, 2024</CardDescription>
+                  <CardTitle className="text-2xl">Port of Saipan</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    Major infrastructure improvements begin at Saipan Port to enhance cargo capacity and efficiency.
+                  <p className="text-gray-600 mb-4">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. The main commercial and passenger hub serving the Commonwealth.
                   </p>
-                  <Link to="/news" className="inline-flex items-center mt-4 text-blue-600 hover:text-blue-800">
-                    Read More <ArrowRight className="ml-1 h-4 w-4" />
-                  </Link>
+                  <button className="text-blue-600 hover:text-blue-800 font-semibold">
+                    Learn More →
+                  </button>
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="h-48 bg-cover bg-center" 
+                     style={{backgroundImage: "url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=300&fit=crop')"}}>
+                </div>
                 <CardHeader>
-                  <CardTitle className="text-lg">Enhanced Ferry Services</CardTitle>
-                  <CardDescription>December 10, 2024</CardDescription>
+                  <CardTitle className="text-2xl">Port of Tinian</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    New scheduling system improves inter-island ferry reliability and passenger experience.
+                  <p className="text-gray-600 mb-4">
+                    Ut enim ad minim veniam, quis nostrud exercitation. Strategic cargo and ferry operations connecting Tinian to the network.
                   </p>
-                  <Link to="/news" className="inline-flex items-center mt-4 text-blue-600 hover:text-blue-800">
-                    Read More <ArrowRight className="ml-1 h-4 w-4" />
-                  </Link>
+                  <button className="text-blue-600 hover:text-blue-800 font-semibold">
+                    Learn More →
+                  </button>
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="h-48 bg-cover bg-center" 
+                     style={{backgroundImage: "url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&h=300&fit=crop')"}}>
+                </div>
                 <CardHeader>
-                  <CardTitle className="text-lg">Environmental Initiative</CardTitle>
-                  <CardDescription>December 5, 2024</CardDescription>
+                  <CardTitle className="text-2xl">Port of Rota</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    CNMI Ports Authority launches green port initiative to reduce environmental impact.
+                  <p className="text-gray-600 mb-4">
+                    Duis aute irure dolor in reprehenderit. Essential island connectivity and maritime services for the island of Rota.
                   </p>
-                  <Link to="/news" className="inline-flex items-center mt-4 text-blue-600 hover:text-blue-800">
-                    Read More <ArrowRight className="ml-1 h-4 w-4" />
-                  </Link>
+                  <button className="text-blue-600 hover:text-blue-800 font-semibold">
+                    Learn More →
+                  </button>
                 </CardContent>
               </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Call to Action */}
+        <section className="py-16 bg-blue-900 text-white">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
+            <p className="text-xl mb-8 max-w-2xl mx-auto text-blue-100">
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <div className="space-x-4">
+              <button className="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                Contact Us
+              </button>
+              <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors">
+                View Services
+              </button>
             </div>
           </div>
         </section>

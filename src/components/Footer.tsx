@@ -7,7 +7,14 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-lg font-semibold mb-4">CNMI Ports Authority</h3>
+            <div className="flex items-center space-x-3 mb-4">
+              <img 
+                src="https://cnmiports.com/images/logo2.gif" 
+                alt="CNMI Ports Authority Logo" 
+                className="w-10 h-10 object-contain"
+              />
+              <h3 className="text-lg font-semibold">CNMI Ports Authority</h3>
+            </div>
             <p className="text-gray-300 text-sm mb-4">
               Connecting the Commonwealth through efficient and reliable port operations across Saipan, Tinian, and Rota.
             </p>
