@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Ship, Anchor, MapPin, Clock, Users, TrendingUp, ArrowRight, Play, Pause } from "lucide-react";
+import { Ship, Anchor, MapPin, Clock, Users, TrendingUp, ArrowRight, Play, Pause, Plane } from "lucide-react";
 
 const Index = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -43,9 +43,89 @@ const Index = () => {
       </Helmet>
       
       <Layout>
-        {/* Hero Section with Enhanced Animations */}
+        {/* Hero Section with Video Background */}
         <section className="relative h-screen flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600"></div>
+          {/* Video Background Layer */}
+          <div className="absolute inset-0">
+            {/* Simulated video background with animated elements */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600"></div>
+            
+            {/* Animated airplanes */}
+            <div className="absolute inset-0">
+              <Plane 
+                className="absolute text-white opacity-20 w-12 h-12 animate-[fly-across_15s_linear_infinite]"
+                style={{ 
+                  top: '20%', 
+                  left: '-5%',
+                  animationDelay: '0s'
+                }}
+              />
+              <Plane 
+                className="absolute text-white opacity-15 w-8 h-8 animate-[fly-across_20s_linear_infinite]"
+                style={{ 
+                  top: '30%', 
+                  left: '-5%',
+                  animationDelay: '7s'
+                }}
+              />
+              <Plane 
+                className="absolute text-white opacity-25 w-10 h-10 animate-[fly-across_18s_linear_infinite]"
+                style={{ 
+                  top: '15%', 
+                  left: '-5%',
+                  animationDelay: '12s'
+                }}
+              />
+            </div>
+
+            {/* Animated cargo ships */}
+            <div className="absolute inset-0">
+              <Ship 
+                className="absolute text-white opacity-20 w-16 h-16 animate-[sail-across_25s_linear_infinite]"
+                style={{ 
+                  bottom: '25%', 
+                  left: '-8%',
+                  animationDelay: '0s'
+                }}
+              />
+              <Ship 
+                className="absolute text-white opacity-15 w-12 h-12 animate-[sail-across_30s_linear_infinite]"
+                style={{ 
+                  bottom: '35%', 
+                  left: '-8%',
+                  animationDelay: '10s'
+                }}
+              />
+              <Ship 
+                className="absolute text-white opacity-25 w-14 h-14 animate-[sail-across_28s_linear_infinite]"
+                style={{ 
+                  bottom: '20%', 
+                  left: '-8%',
+                  animationDelay: '18s'
+                }}
+              />
+            </div>
+
+            {/* Moving clouds */}
+            <div className="absolute inset-0">
+              {[...Array(6)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute bg-white opacity-10 rounded-full animate-[drift_20s_linear_infinite]"
+                  style={{
+                    width: `${80 + Math.random() * 120}px`,
+                    height: `${40 + Math.random() * 60}px`,
+                    left: `${-10 + Math.random() * 120}%`,
+                    top: `${10 + Math.random() * 40}%`,
+                    animationDelay: `${Math.random() * 20}s`,
+                    animationDuration: `${15 + Math.random() * 10}s`
+                  }}
+                ></div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Video overlay */}
           <div className="absolute inset-0 bg-black opacity-40"></div>
           
           {/* Animated background particles */}
@@ -64,6 +144,20 @@ const Index = () => {
             ))}
           </div>
 
+          {/* Video controls overlay */}
+          <div className="absolute top-4 right-4 z-20">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setIsVideoPlaying(!isVideoPlaying)}
+              className="bg-black/20 border-white/30 text-white hover:bg-black/40"
+            >
+              {isVideoPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+              <span className="ml-2">{isVideoPlaying ? 'Pause' : 'Play'}</span>
+            </Button>
+          </div>
+
+          {/* Content overlay */}
           <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
             <div className="animate-fade-in">
               <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">

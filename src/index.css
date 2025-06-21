@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -99,5 +100,54 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Video background animations */
+@keyframes fly-across {
+  0% {
+    transform: translateX(-100px) translateY(0px) rotate(15deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(calc(100vw + 100px)) translateY(-20px) rotate(15deg);
+    opacity: 0;
+  }
+}
+
+@keyframes sail-across {
+  0% {
+    transform: translateX(-150px) translateY(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(calc(100vw + 150px)) translateY(10px);
+    opacity: 0;
+  }
+}
+
+@keyframes drift {
+  0% {
+    transform: translateX(-200px);
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateX(calc(100vw + 200px));
+    opacity: 0.1;
   }
 }
