@@ -2,7 +2,8 @@
 import { Helmet } from "react-helmet-async";
 import Layout from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileText, Download, Upload } from "lucide-react";
+import { FileText, Download, Upload, ExternalLink } from "lucide-react";
+import LandingRequestForm from "@/components/LandingRequestForm";
 
 const Documents = () => {
   return (
@@ -47,7 +48,7 @@ const Documents = () => {
                     className="w-full h-32 object-cover rounded mb-4"
                   />
                   <p className="text-gray-600 mb-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Download and submit required permits for port operations and vessel management.
+                    Download and submit required permits for port operations and vessel management.
                   </p>
                   <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors inline-flex items-center">
                     <Download className="w-4 h-4 mr-2" />
@@ -70,9 +71,12 @@ const Documents = () => {
                     className="w-full h-32 object-cover rounded mb-4"
                   />
                   <p className="text-gray-600 mb-4">
-                    Ut enim ad minim veniam, quis nostrud exercitation. Interactive forms for vessel landing requests and berth reservations.
+                    Interactive forms for vessel landing requests and berth reservations.
                   </p>
-                  <button className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors inline-flex items-center">
+                  <button 
+                    className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors inline-flex items-center"
+                    onClick={() => document.getElementById('landing-form')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
                     <Upload className="w-4 h-4 mr-2" />
                     Submit Request
                   </button>
@@ -93,7 +97,7 @@ const Documents = () => {
                     className="w-full h-32 object-cover rounded mb-4"
                   />
                   <p className="text-gray-600 mb-4">
-                    Duis aute irure dolor in reprehenderit. Forms and documentation required for cargo handling and customs procedures.
+                    Forms and documentation required for cargo handling and customs procedures.
                   </p>
                   <button className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition-colors inline-flex items-center">
                     <Download className="w-4 h-4 mr-2" />
@@ -103,34 +107,98 @@ const Documents = () => {
               </Card>
             </div>
 
-            <div className="bg-gray-50 rounded-lg p-8">
+            {/* Additional Document Sections */}
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardHeader className="text-center">
+                  <div className="mx-auto w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4">
+                    <FileText className="w-8 h-8 text-orange-600" />
+                  </div>
+                  <CardTitle>CPA ADA - Section 504 Policy</CardTitle>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <img 
+                    src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=200&fit=crop" 
+                    alt="ADA Policy documentation"
+                    className="w-full h-32 object-cover rounded mb-4"
+                  />
+                  <p className="text-gray-600 mb-4">
+                    Access the CNMI Ports Authority ADA Section 504 Policy document.
+                  </p>
+                  <a 
+                    href="https://cnmiports.com/ada_policy_2022.pdf" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700 transition-colors inline-flex items-center"
+                  >
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    View Policy
+                  </a>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardHeader className="text-center">
+                  <div className="mx-auto w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                    <FileText className="w-8 h-8 text-red-600" />
+                  </div>
+                  <CardTitle>CPA Rules and Regulations - Title 40</CardTitle>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <img 
+                    src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400&h=200&fit=crop" 
+                    alt="Rules and regulations documentation"
+                    className="w-full h-32 object-cover rounded mb-4"
+                  />
+                  <p className="text-gray-600 mb-4">
+                    Access the complete CNMI Ports Authority rules and regulations under Title 40.
+                  </p>
+                  <a 
+                    href="https://www.cnmilaw.org/admin.php#gsc.tab=0" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors inline-flex items-center"
+                  >
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    View Regulations
+                  </a>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="bg-gray-50 rounded-lg p-8 mb-12">
               <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">Document Categories</h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="text-center">
                   <h4 className="font-semibold text-blue-900 mb-2">Vessel Operations</h4>
                   <p className="text-gray-600 text-sm">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Forms and permits for vessel operations and port access.
                   </p>
                 </div>
                 <div className="text-center">
                   <h4 className="font-semibold text-blue-900 mb-2">Cargo Handling</h4>
                   <p className="text-gray-600 text-sm">
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+                    Documentation for cargo handling and customs procedures.
                   </p>
                 </div>
                 <div className="text-center">
                   <h4 className="font-semibold text-blue-900 mb-2">Safety Compliance</h4>
                   <p className="text-gray-600 text-sm">
-                    Duis aute irure dolor in reprehenderit in voluptate velit.
+                    Safety regulations and compliance documentation.
                   </p>
                 </div>
                 <div className="text-center">
                   <h4 className="font-semibold text-blue-900 mb-2">Environmental</h4>
                   <p className="text-gray-600 text-sm">
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa.
+                    Environmental protection policies and procedures.
                   </p>
                 </div>
               </div>
+            </div>
+
+            {/* Landing Request Form */}
+            <div id="landing-form" className="mb-12">
+              <LandingRequestForm />
             </div>
           </div>
         </section>
