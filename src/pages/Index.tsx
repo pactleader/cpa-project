@@ -1,198 +1,287 @@
+
+import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import ImageSlider from "@/components/ImageSlider";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Anchor, Ship, Truck, Users, Play } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Ship, Anchor, MapPin, Clock, Users, TrendingUp, ArrowRight, Play, Pause } from "lucide-react";
 
 const Index = () => {
-  const features = [
-    {
-      icon: Ship,
-      title: "Port Operations",
-      description: "Comprehensive maritime services across all three islands with state-of-the-art facilities.",
-      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=400&h=200&fit=crop"
-    },
-    {
-      icon: Truck,
-      title: "Cargo Services",
-      description: "Efficient cargo handling and logistics solutions supporting the Commonwealth's economy.",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=200&fit=crop"
-    },
-    {
-      icon: Anchor,
-      title: "Ferry Services",
-      description: "Reliable inter-island passenger and vehicle transportation connecting our communities.",
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=200&fit=crop"
-    },
-    {
-      icon: Users,
-      title: "Community Focus",
-      description: "Serving the Commonwealth with dedication and excellence for sustainable growth.",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=200&fit=crop"
-    }
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [currentStat, setCurrentStat] = useState(0);
+
+  const stats = [
+    { label: "Vessels Served Monthly", value: "150+", icon: Ship },
+    { label: "Cargo Handled (Tons)", value: "50K+", icon: Anchor },
+    { label: "Islands Connected", value: "3", icon: MapPin },
+    { label: "Years of Service", value: "25+", icon: Clock }
   ];
+
+  const quickActions = [
+    { title: "Ferry Schedules", description: "Check inter-island ferry times", href: "/", color: "bg-blue-500" },
+    { title: "Landing Request", description: "Submit vessel landing request", href: "/documents", color: "bg-green-500" },
+    { title: "Port Status", description: "Real-time port operations", href: "/port-saipan", color: "bg-purple-500" },
+    { title: "Contact Harbor", description: "Reach our operations team", href: "/contact", color: "bg-orange-500" }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentStat((prev) => (prev + 1) % stats.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [stats.length]);
 
   return (
     <>
       <Helmet>
-        <title>CNMI Ports Authority - Connecting the Commonwealth</title>
-        <meta name="description" content="The Commonwealth of the Northern Mariana Islands Ports Authority provides essential maritime services connecting Saipan, Tinian, and Rota." />
+        <title>CNMI Ports Authority - Gateway to the Pacific</title>
+        <meta name="description" content="Official website of the Commonwealth of the Northern Mariana Islands Ports Authority. Connecting the Pacific through maritime excellence." />
       </Helmet>
       
       <Layout>
-        {/* Hero Section with Image Slider */}
-        <div className="relative">
-          <ImageSlider />
-        </div>
+        {/* Hero Section with Enhanced Animations */}
+        <section className="relative h-screen flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600"></div>
+          <div className="absolute inset-0 bg-black opacity-40"></div>
+          
+          {/* Animated background particles */}
+          <div className="absolute inset-0">
+            {[...Array(20)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-2 h-2 bg-white opacity-30 rounded-full animate-pulse"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 2}s`,
+                  animationDuration: `${2 + Math.random() * 2}s`
+                }}
+              ></div>
+            ))}
+          </div>
+
+          <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+            <div className="animate-fade-in">
+              <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
+                Gateway to the Pacific
+              </h1>
+              <p className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed">
+                Connecting the Commonwealth through world-class maritime services and sustainable port operations
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 px-8 py-3">
+                  <Ship className="w-5 h-5 mr-2" />
+                  Explore Our Ports
+                </Button>
+                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-blue-900 transform hover:scale-105 transition-all duration-300 px-8 py-3">
+                  <Users className="w-5 h-5 mr-2" />
+                  Our Services
+                </Button>
+              </div>
+
+              {/* Animated Stats Counter */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+                {stats.map((stat, index) => {
+                  const Icon = stat.icon;
+                  return (
+                    <div
+                      key={index}
+                      className={`p-4 rounded-lg backdrop-blur-sm transition-all duration-500 transform ${
+                        currentStat === index
+                          ? 'bg-white/20 scale-110 border-2 border-white/30'
+                          : 'bg-white/10 hover:bg-white/15'
+                      }`}
+                    >
+                      <Icon className={`w-8 h-8 mx-auto mb-2 transition-colors duration-500 ${
+                        currentStat === index ? 'text-yellow-300' : 'text-blue-200'
+                      }`} />
+                      <div className="text-2xl font-bold text-white">{stat.value}</div>
+                      <div className="text-sm text-blue-200">{stat.label}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          {/* Scroll indicator */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+            </div>
+          </div>
+        </section>
 
         {/* Featured Video Section */}
-        <section className="py-16 bg-blue-900 text-white">
+        <section className="py-20 bg-gradient-to-r from-gray-50 to-blue-50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Port Operations Overview</h2>
-              <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-                Discover how CNMI Ports Authority connects the Commonwealth through innovative maritime services and modern port facilities.
+              <Badge className="mb-4 bg-blue-100 text-blue-800 hover:bg-blue-200">Featured Content</Badge>
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">Experience Our Ports</h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Discover the maritime excellence that connects our islands
               </p>
             </div>
-
+            
             <div className="max-w-4xl mx-auto">
-              <div className="relative aspect-video bg-black rounded-lg overflow-hidden shadow-2xl">
-                <img
-                  src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=1200&h=675&fit=crop"
-                  alt="Port Operations Video Thumbnail"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                  <button className="bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full p-6 transition-all duration-300 group">
-                    <Play className="w-12 h-12 text-white group-hover:scale-110 transition-transform" fill="currentColor" />
-                  </button>
+              <div className="relative bg-black rounded-xl overflow-hidden shadow-2xl group">
+                <div className="aspect-video bg-gradient-to-br from-blue-900 to-blue-600 flex items-center justify-center">
+                  <div className="text-center">
+                    <Button 
+                      size="lg"
+                      onClick={() => setIsVideoPlaying(!isVideoPlaying)}
+                      className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/50 rounded-full p-6 transform group-hover:scale-110 transition-all duration-300"
+                    >
+                      {isVideoPlaying ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8 ml-1" />}
+                    </Button>
+                    <p className="text-white mt-4 text-lg">Port Operations Overview</p>
+                  </div>
                 </div>
-                <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-xl font-semibold mb-2">CNMI Ports Authority: Connecting Our Islands</h3>
-                  <p className="text-blue-100 text-sm">Learn about our comprehensive port operations and community services across Saipan, Tinian, and Rota.</p>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Features Section */}
-        <section className="py-16 bg-gray-50">
+        {/* Quick Actions with Enhanced Design */}
+        <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Services</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Connecting the Commonwealth through efficient and reliable port operations, 
-                supporting economic growth and inter-island connectivity across Saipan, Tinian, and Rota.
-              </p>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">Quick Actions</h2>
+              <p className="text-xl text-gray-600">Everything you need at your fingertips</p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {features.map((feature, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow">
-                  <CardHeader className="text-center">
-                    <div className="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                      <feature.icon className="w-8 h-8 text-blue-600" />
-                    </div>
-                    <CardTitle className="text-xl">{feature.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="text-center">
-                    <img 
-                      src={feature.image}
-                      alt={feature.title}
-                      className="w-full h-32 object-cover rounded mb-4"
-                    />
-                    <p className="text-gray-600">
-                      {feature.description}
-                    </p>
-                  </CardContent>
-                </Card>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {quickActions.map((action, index) => (
+                <Link key={index} to={action.href} className="group">
+                  <Card className="h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden">
+                    <div className={`h-2 ${action.color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}></div>
+                    <CardHeader className="pb-3">
+                      <div className={`w-12 h-12 ${action.color} rounded-lg flex items-center justify-center mb-4 transform group-hover:rotate-12 transition-transform duration-300`}>
+                        <ArrowRight className="w-6 h-6 text-white" />
+                      </div>
+                      <CardTitle className="text-lg group-hover:text-blue-600 transition-colors duration-300">
+                        {action.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600 group-hover:text-gray-800 transition-colors duration-300">
+                        {action.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Ports Section */}
-        <section className="py-16">
+        {/* Enhanced Image Slider */}
+        <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Ports</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Modern port facilities serving the unique needs of each island in the Commonwealth,
-                ensuring reliable maritime connections and economic opportunities.
-              </p>
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">Our Ports in Action</h2>
+              <p className="text-xl text-gray-600">Witness the daily operations that keep our islands connected</p>
             </div>
-
-            <div className="grid lg:grid-cols-3 gap-8">
-              <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-cover bg-center" 
-                     style={{backgroundImage: "url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=300&fit=crop')"}}>
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-2xl">Port of Saipan</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-4">
-                    The main commercial and passenger hub serving the Commonwealth with comprehensive maritime services and modern facilities.
-                  </p>
-                  <button className="text-blue-600 hover:text-blue-800 font-semibold">
-                    Learn More →
-                  </button>
-                </CardContent>
-              </Card>
-
-              <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-cover bg-center" 
-                     style={{backgroundImage: "url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=300&fit=crop')"}}>
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-2xl">Port of Tinian</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-4">
-                    Strategic cargo and ferry operations connecting Tinian to the Commonwealth network with reliable transportation services.
-                  </p>
-                  <button className="text-blue-600 hover:text-blue-800 font-semibold">
-                    Learn More →
-                  </button>
-                </CardContent>
-              </Card>
-
-              <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-cover bg-center" 
-                     style={{backgroundImage: "url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&h=300&fit=crop')"}}>
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-2xl">Port of Rota</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-4">
-                    Essential island connectivity and maritime services supporting the unique community and economic needs of Rota.
-                  </p>
-                  <button className="text-blue-600 hover:text-blue-800 font-semibold">
-                    Learn More →
-                  </button>
-                </CardContent>
-              </Card>
+            <div className="relative">
+              <ImageSlider />
+              <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent pointer-events-none rounded-lg"></div>
             </div>
           </div>
         </section>
 
-        {/* Call to Action */}
-        <section className="py-16 bg-blue-900 text-white">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto text-blue-100">
-              Connect with us to learn more about our services, facilities, and how we can support your maritime needs across the Commonwealth.
-            </p>
-            <div className="space-x-4">
-              <button className="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                Contact Us
-              </button>
-              <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors">
-                View Services
-              </button>
+        {/* Interactive Tabs Section */}
+        <section className="py-20 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">Explore Our Services</h2>
+              <p className="text-xl text-gray-600">Comprehensive maritime solutions for the Pacific region</p>
             </div>
+
+            <Tabs defaultValue="cargo" className="max-w-4xl mx-auto">
+              <TabsList className="grid w-full grid-cols-3 mb-8 bg-white shadow-lg">
+                <TabsTrigger value="cargo" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+                  Cargo Operations
+                </TabsTrigger>
+                <TabsTrigger value="passenger" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+                  Passenger Services
+                </TabsTrigger>
+                <TabsTrigger value="commercial" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+                  Commercial Fleet
+                </TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="cargo" className="mt-8">
+                <Card className="border-0 shadow-xl">
+                  <CardContent className="p-8">
+                    <div className="grid md:grid-cols-2 gap-8 items-center">
+                      <div>
+                        <h3 className="text-2xl font-bold text-gray-800 mb-4">Advanced Cargo Handling</h3>
+                        <p className="text-gray-600 mb-6 leading-relaxed">
+                          State-of-the-art equipment and experienced personnel ensure efficient cargo operations across all three islands.
+                        </p>
+                        <div className="flex items-center text-blue-600">
+                          <TrendingUp className="w-5 h-5 mr-2" />
+                          <span className="font-semibold">50,000+ tons handled monthly</span>
+                        </div>
+                      </div>
+                      <div className="h-64 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
+                        <Ship className="w-24 h-24 text-white opacity-80" />
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="passenger" className="mt-8">
+                <Card className="border-0 shadow-xl">
+                  <CardContent className="p-8">
+                    <div className="grid md:grid-cols-2 gap-8 items-center">
+                      <div>
+                        <h3 className="text-2xl font-bold text-gray-800 mb-4">Inter-Island Ferry Service</h3>
+                        <p className="text-gray-600 mb-6 leading-relaxed">
+                          Reliable and comfortable ferry connections between Saipan, Tinian, and Rota for residents and visitors.
+                        </p>
+                        <div className="flex items-center text-green-600">
+                          <Users className="w-5 h-5 mr-2" />
+                          <span className="font-semibold">Daily scheduled departures</span>
+                        </div>
+                      </div>
+                      <div className="h-64 bg-gradient-to-br from-green-600 to-green-800 rounded-lg flex items-center justify-center">
+                        <Users className="w-24 h-24 text-white opacity-80" />
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="commercial" className="mt-8">
+                <Card className="border-0 shadow-xl">
+                  <CardContent className="p-8">
+                    <div className="grid md:grid-cols-2 gap-8 items-center">
+                      <div>
+                        <h3 className="text-2xl font-bold text-gray-800 mb-4">Commercial Fleet Support</h3>
+                        <p className="text-gray-600 mb-6 leading-relaxed">
+                          Comprehensive support services for commercial vessels including maintenance, fuel, and logistics coordination.
+                        </p>
+                        <div className="flex items-center text-purple-600">
+                          <Anchor className="w-5 h-5 mr-2" />
+                          <span className="font-semibold">24/7 port operations</span>
+                        </div>
+                      </div>
+                      <div className="h-64 bg-gradient-to-br from-purple-600 to-purple-800 rounded-lg flex items-center justify-center">
+                        <Anchor className="w-24 h-24 text-white opacity-80" />
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+            </Tabs>
           </div>
         </section>
       </Layout>
