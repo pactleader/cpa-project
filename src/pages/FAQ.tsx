@@ -4,13 +4,14 @@ import Layout from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Search, Ship, FileText, CreditCard, Phone, MapPin, Clock } from "lucide-react";
+import { Search, Ship, FileText, CreditCard, Phone, MapPin, Clock, Users } from "lucide-react";
 
 const FAQ = () => {
   const [searchTerm, setSearchTerm] = useState("");
