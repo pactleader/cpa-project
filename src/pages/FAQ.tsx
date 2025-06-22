@@ -7,8 +7,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Search, Ship, FileText, CreditCard, Phone, MapPin, Clock, Users } from "lucide-react";
+
 const FAQ = () => {
   const [searchTerm, setSearchTerm] = useState("");
+
   const faqData = {
     general: [{
       question: "What are the operating hours of CNMI Ports Authority?",
@@ -100,8 +102,14 @@ const FAQ = () => {
       tags: ["environment", "regulations", "compliance"]
     }]
   };
+
   const allFAQs = Object.values(faqData).flat();
-  const filteredFAQs = searchTerm ? allFAQs.filter(faq => faq.question.toLowerCase().includes(searchTerm.toLowerCase()) || faq.answer.toLowerCase().includes(searchTerm.toLowerCase()) || faq.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))) : [];
+  const filteredFAQs = searchTerm ? allFAQs.filter(faq => 
+    faq.question.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    faq.answer.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    faq.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+  ) : [];
+
   const categoryIcons = {
     general: Users,
     ferry: Ship,
@@ -109,14 +117,17 @@ const FAQ = () => {
     facilities: MapPin,
     regulations: Clock
   };
+
   const categoryLabels = {
     general: "General Information",
-    ferry: "Ferry Services",
+    ferry: "Ferry Services", 
     cargo: "Cargo Operations",
     facilities: "Port Facilities",
     regulations: "Rules & Regulations"
   };
-  return <>
+
+  return (
+    <>
       <Helmet>
         <title>Frequently Asked Questions - CNMI Ports Authority</title>
         <meta name="description" content="Comprehensive FAQ covering ferry services, cargo operations, port facilities, and regulations for CNMI Ports Authority." />
@@ -138,46 +149,67 @@ const FAQ = () => {
               {/* Search Bar */}
               <div className="relative max-w-2xl mx-auto animate-scale-in">
                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-                <Input type="text" placeholder="Search FAQs..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="pl-12 pr-4 py-4 text-lg rounded-full border-0 bg-white/10 backdrop-blur-sm text-white placeholder-gray-300 focus:bg-white/20 transition-all duration-300" />
+                <Input
+                  type="text"
+                  placeholder="Search FAQs..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-12 pr-4 py-4 text-lg rounded-full border-0 bg-white/10 backdrop-blur-sm text-white placeholder-gray-300 focus:bg-white/20 transition-all duration-300"
+                />
               </div>
             </div>
           </div>
         </div>
 
         {/* Search Results */}
-        {searchTerm && <section className="py-16 bg-gray-50">
+        {searchTerm && (
+          <section className="py-16 bg-gray-50">
             <div className="container mx-auto px-4">
               <h2 className="text-3xl font-bold mb-8 text-center">
                 Search Results for "{searchTerm}"
               </h2>
-              {filteredFAQs.length > 0 ? <div className="max-w-4xl mx-auto">
+              {filteredFAQs.length > 0 ? (
+                <div className="max-w-4xl mx-auto">
                   <Accordion type="single" collapsible className="space-y-4">
-                    {filteredFAQs.map((faq, index) => <AccordionItem key={index} value={`search-${index}`} className="bg-white rounded-lg shadow-md border-0 overflow-hidden hover:shadow-lg transition-all duration-300">
+                    {filteredFAQs.map((faq, index) => (
+                      <AccordionItem 
+                        key={index} 
+                        value={`search-${index}`} 
+                        className="bg-white rounded-lg shadow-md border-0 overflow-hidden hover:shadow-lg transition-all duration-300"
+                      >
                         <AccordionTrigger className="px-6 py-4 text-left hover:bg-blue-50 transition-colors">
                           <div className="flex flex-col items-start">
                             <span className="font-semibold text-gray-900">{faq.question}</span>
                             <div className="flex gap-2 mt-2">
-                              {faq.tags.map(tag => <Badge key={tag} variant="secondary" className="text-xs">
+                              {faq.tags.map((tag) => (
+                                <Badge key={tag} variant="secondary" className="text-xs">
                                   {tag}
-                                </Badge>)}
+                                </Badge>
+                              ))}
                             </div>
                           </div>
                         </AccordionTrigger>
                         <AccordionContent className="px-6 pb-4 text-gray-600 leading-relaxed">
                           {faq.answer}
                         </AccordionContent>
-                      </AccordionItem>)}
+                      </AccordionItem>
+                    ))}
                   </Accordion>
-                </div> : <div className="text-center py-12">
+                </div>
+              ) : (
+                <div className="text-center py-12">
                   <Search className="h-16 w-16 text-gray-400 mx-auto mb-4" />
                   <p className="text-xl text-gray-600">No results found for "{searchTerm}"</p>
                   <p className="text-gray-500 mt-2">Try different keywords or browse our categories below</p>
-                </div>}
+                </div>
+              )}
             </div>
-          </section>}
+          </section>
+        )}
 
         {/* FAQ Categories */}
-        {!searchTerm && <section className="py-16">
+        {!searchTerm && (
+          <section className="py-16">
             <div className="container mx-auto px-4">
               <div className="text-center mb-12">
                 <h2 className="text-4xl font-bold text-gray-900 mb-4">Browse by Category</h2>
@@ -186,24 +218,31 @@ const FAQ = () => {
                 </p>
               </div>
 
-              <Tabs defaultValue="general" className="max-w-6xl mx-auto py-[10px]">
-                <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 mb-8 bg-gray-100 p-2 py-[10px] px-[10px] rounded-lg">
+              <Tabs defaultValue="general" className="max-w-6xl mx-auto">
+                <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 mb-12 bg-gray-100 p-2 rounded-lg h-auto">
                   {Object.entries(categoryLabels).map(([key, label]) => {
-                const IconComponent = categoryIcons[key as keyof typeof categoryIcons];
-                return <TabsTrigger key={key} value={key} className="flex flex-col items-center gap-2 px-2 data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all duration-200 py-[12px] my-[2px] rounded-md">
+                    const IconComponent = categoryIcons[key as keyof typeof categoryIcons];
+                    return (
+                      <TabsTrigger 
+                        key={key} 
+                        value={key} 
+                        className="flex flex-col items-center gap-2 px-3 py-4 data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all duration-200 rounded-md h-auto min-h-[80px] text-center"
+                      >
                         <IconComponent className="h-5 w-5" />
-                        <span className="text-xs md:text-sm font-medium">{label}</span>
-                      </TabsTrigger>;
-              })}
+                        <span className="text-xs md:text-sm font-medium leading-tight">{label}</span>
+                      </TabsTrigger>
+                    );
+                  })}
                 </TabsList>
 
-                {Object.entries(faqData).map(([category, faqs]) => <TabsContent key={category} value={category} className="mt-8">
+                {Object.entries(faqData).map(([category, faqs]) => (
+                  <TabsContent key={category} value={category} className="mt-8">
                     <Card className="border-0 shadow-lg">
-                      <CardHeader className="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-t-lg py-[5px] my-[5px]">
+                      <CardHeader className="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-t-lg">
                         <div className="flex items-center gap-3">
                           {React.createElement(categoryIcons[category as keyof typeof categoryIcons], {
-                      className: "h-8 w-8"
-                    })}
+                            className: "h-8 w-8"
+                          })}
                           <div>
                             <CardTitle className="text-2xl">{categoryLabels[category as keyof typeof categoryLabels]}</CardTitle>
                             <p className="text-blue-100 mt-1">{faqs.length} frequently asked questions</p>
@@ -212,30 +251,40 @@ const FAQ = () => {
                       </CardHeader>
                       <CardContent className="p-0">
                         <Accordion type="single" collapsible className="divide-y">
-                          {faqs.map((faq, index) => <AccordionItem key={index} value={`${category}-${index}`} className="border-0 px-6 hover:bg-gray-50 transition-colors">
+                          {faqs.map((faq, index) => (
+                            <AccordionItem 
+                              key={index} 
+                              value={`${category}-${index}`} 
+                              className="border-0 px-6 hover:bg-gray-50 transition-colors"
+                            >
                               <AccordionTrigger className="py-6 text-left hover:no-underline">
                                 <div className="flex flex-col items-start w-full">
                                   <span className="font-semibold text-gray-900 text-lg mb-2">
                                     {faq.question}
                                   </span>
                                   <div className="flex gap-2">
-                                    {faq.tags.map(tag => <Badge key={tag} variant="outline" className="text-xs">
+                                    {faq.tags.map((tag) => (
+                                      <Badge key={tag} variant="outline" className="text-xs">
                                         {tag}
-                                      </Badge>)}
+                                      </Badge>
+                                    ))}
                                   </div>
                                 </div>
                               </AccordionTrigger>
                               <AccordionContent className="pb-6 text-gray-600 leading-relaxed text-base">
                                 {faq.answer}
                               </AccordionContent>
-                            </AccordionItem>)}
+                            </AccordionItem>
+                          ))}
                         </Accordion>
                       </CardContent>
                     </Card>
-                  </TabsContent>)}
+                  </TabsContent>
+                ))}
               </Tabs>
             </div>
-          </section>}
+          </section>
+        )}
 
         {/* Contact Section */}
         <section className="py-16 bg-gradient-to-r from-blue-900 to-blue-800 text-white">
@@ -270,6 +319,8 @@ const FAQ = () => {
           </div>
         </section>
       </Layout>
-    </>;
+    </>
+  );
 };
+
 export default FAQ;
