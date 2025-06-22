@@ -90,7 +90,7 @@ const PortTinian = () => {
               </p>
             </div>
 
-            <Carousel className="w-full max-w-4xl mx-auto">
+            <Carousel className="w-full max-w-4xl mx-auto mb-16">
               <CarouselContent>
                 {services.map((service, index) => (
                   <CarouselItem key={index} className="md:basis-1/2">
@@ -115,6 +115,28 @@ const PortTinian = () => {
               <CarouselPrevious />
               <CarouselNext />
             </Carousel>
+
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Port Location</h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Located on Tinian island, providing essential ferry and cargo services.
+              </p>
+            </div>
+
+            <Card className="overflow-hidden">
+              <div className="h-96">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3823.9876543210987!2d145.6543210987654!3d15.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sTinian%20Port!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Port of Tinian Location"
+                ></iframe>
+              </div>
+            </Card>
           </div>
         </section>
       </Layout>

@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import NewsTicker from "./NewsTicker";
+import FloatingWidgets from "./FloatingWidgets";
 
 interface LayoutProps {
   children: ReactNode;
@@ -17,6 +18,7 @@ const Layout = ({ children }: LayoutProps) => {
         {children}
       </main>
       <Footer />
+      <FloatingWidgets />
     </div>
   );
 };

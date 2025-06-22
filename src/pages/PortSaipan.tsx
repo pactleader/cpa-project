@@ -107,7 +107,7 @@ const PortSaipan = () => {
               </p>
             </div>
 
-            <Carousel className="w-full max-w-5xl mx-auto">
+            <Carousel className="w-full max-w-5xl mx-auto mb-16">
               <CarouselContent>
                 {facilities.map((facility, index) => (
                   <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
@@ -132,6 +132,28 @@ const PortSaipan = () => {
               <CarouselPrevious />
               <CarouselNext />
             </Carousel>
+
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Port Location</h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Find us at the main commercial harbor in Saipan, Commonwealth of the Northern Mariana Islands.
+              </p>
+            </div>
+
+            <Card className="overflow-hidden">
+              <div className="h-96">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3823.5234567890123!2d145.7123456789012!3d15.234567890123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSaipan%20Port!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Port of Saipan Location"
+                ></iframe>
+              </div>
+            </Card>
           </div>
         </section>
       </Layout>

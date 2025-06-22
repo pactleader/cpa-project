@@ -1,14 +1,16 @@
-
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Layout from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Badge } from "@/components/ui/badge";
-import { Search, Clock, Users, Ship, FileText, Phone, MapPin } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Search, Ship, FileText, CreditCard, Phone, MapPin, Clock } from "lucide-react";
 
 const FAQ = () => {
   const [searchTerm, setSearchTerm] = useState("");
