@@ -186,7 +186,7 @@ const FAQ = () => {
                 </p>
               </div>
 
-              <Tabs defaultValue="general" className="max-w-6xl mx-auto">
+              <Tabs defaultValue="general" className="max-w-6xl mx-auto py-[10px]">
                 <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 mb-8 bg-gray-100 p-2 py-[10px] px-[10px] rounded-lg">
                   {Object.entries(categoryLabels).map(([key, label]) => {
                 const IconComponent = categoryIcons[key as keyof typeof categoryIcons];
@@ -199,7 +199,7 @@ const FAQ = () => {
 
                 {Object.entries(faqData).map(([category, faqs]) => <TabsContent key={category} value={category} className="mt-8">
                     <Card className="border-0 shadow-lg">
-                      <CardHeader className="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-t-lg">
+                      <CardHeader className="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-t-lg py-[5px] my-[5px]">
                         <div className="flex items-center gap-3">
                           {React.createElement(categoryIcons[category as keyof typeof categoryIcons], {
                       className: "h-8 w-8"
