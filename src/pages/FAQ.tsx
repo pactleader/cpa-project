@@ -190,7 +190,7 @@ const FAQ = () => {
                 <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 mb-8 bg-gray-100 p-2 py-[10px] px-[10px] rounded-lg">
                   {Object.entries(categoryLabels).map(([key, label]) => {
                 const IconComponent = categoryIcons[key as keyof typeof categoryIcons];
-                return <TabsTrigger key={key} value={key} className="flex flex-col items-center gap-2 py-4 px-2 data-[state=active]:bg-white data-[state=active]:shadow-sm rounded-md transition-all duration-200">
+                return <TabsTrigger key={key} value={key} className="flex flex-col items-center gap-2 px-2 data-[state=active]:bg-white data-[state=active]:shadow-sm rounded-md transition-all duration-200 py-[12px]">
                         <IconComponent className="h-5 w-5" />
                         <span className="text-xs md:text-sm font-medium">{label}</span>
                       </TabsTrigger>;
